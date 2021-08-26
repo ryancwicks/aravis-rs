@@ -50,7 +50,7 @@ impl Buffer {
 	/// If the buffer is dropped without taking ownership of the data again, the memory is leaked.
 	pub fn new_leaked_box(len: usize) -> Self {
 		let mut buffer = Box::<[u8]>::new_uninit_slice(len);
-		let data = std::mem::MaybeUninit::first_ptr_mut(&mut buffer);
+		let data = std::mem::MaybeUninit::slice_as_mut_ptr(&mut buffer);
 		let result = unsafe { Buffer::new_preallocated(data, len) };
 		std::mem::forget(buffer);
 		result
