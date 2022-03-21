@@ -1,2 +1,2 @@
 [workspace]
-members = ["aravis", "aravis-sys", "aravis-utils"]
+members = ["aravis", "aravis-sys"]
